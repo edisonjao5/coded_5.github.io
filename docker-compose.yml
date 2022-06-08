@@ -1,0 +1,27 @@
+# docker-compose.yml
+version: "3.7"
+
+services:
+  nginx:
+    container_name: ssilva-nginx
+    image: nginx:stable-alpine
+    ports:
+      - "80:80"
+    depends_on:
+      - ssilva-frontend
+      - ssilva-backend
+  
+  ssilva-frontend:
+    container_name: ssilva-frontend
+    volumes:
+      - ssilva-frontend:/app/node_modules
+    depends_on:
+      - ssilva-backend
+  
+  ssilva-backend:
+    container_name: ssilva-backend
+    ports:
+      - "8000:8000"
+
+volumes:
+  ssilva-frontend:

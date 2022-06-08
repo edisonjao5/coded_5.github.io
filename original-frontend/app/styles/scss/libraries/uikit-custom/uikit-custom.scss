@@ -1,0 +1,20 @@
+/* UIKIT */
+// 1. Your custom variables and variable overwrites.
+$global-font-family: 'Segoe Ui', sans-serif;
+/* $base-body-font-family: $global-font-family !default;
+$base-body-font-weight: normal !default;
+$global-font-size: 16px !default;
+$base-body-font-size: $global-font-size !default;
+$global-line-height: 1.5 !default;
+$base-body-line-height: $global-line-height !default;
+$base-body-color: $global-color !default; */
+
+// 2. Import default variables and available mixins.
+@import "./node_modules/uikit/src/scss/variables.scss";
+@import "./node_modules/uikit/src/scss/mixins.scss";
+
+// 3. Your custom mixin overwrites.
+// -----------------------
+
+// 4. Import UIkit. (CUSTOM ON PARTS)
+@import "./node_modules/uikit/src/scss/uikit-theme.scss";

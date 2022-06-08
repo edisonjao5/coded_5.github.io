@@ -1,0 +1,53 @@
+//// TRANSITIONS
+$main_transition: all .3s ease;
+$medium_transition: all .5s ease;
+$medium_shadown: 0 7px 14px 0 rgba(60,66,87,.1), 0 3px 6px 0 rgba(0,0,0,.07);
+$mini-shadown: 0 0 0 1px rgba(42,47,69,.1), 0 2px 5px 0 rgba(42,47,69,.08), 0 1px 1.5px 0 rgba(0,0,0,.07), 0 1px 2px 0 rgba(0,0,0,.08), 0 0 0 0 transparent;
+
+//// MIXINS 
+@mixin placeholder($color: black, $transform: null, $weight: null){
+    &::-webkit-input-placeholder {color: $color; text-transform: $transform;}
+    &::-moz-placeholder {color: $color; text-transform: $transform;}
+    &:-ms-input-placeholder {color: $color; text-transform: $transform;}
+    &:-moz-placeholder {color: $color; text-transform: $transform;}
+}
+@mixin reset_pseudo{
+    &.uk-container{
+        &:before, &:after{
+            content: none;
+        }
+    }
+}
+@mixin absolute($width:100%, $height: 100%, $top: 0, $left: 0, $bottom: null, $right: null){
+    position: absolute;
+    width: $width;
+    height: $height;
+    top: $top;
+    left: $left;
+    bottom: $bottom;
+    right: $right;
+}
+@mixin breakWord{
+    white-space: pre-wrap; /* css-3 */
+    white-space: -moz-pre-wrap; /* Mozilla, since 1999 */
+    white-space: -pre-wrap; /* Opera 4-6 */
+    white-space: -o-pre-wrap; /* Opera 7 */
+    word-wrap: break-word; /* Internet Explorer 5.5+ */
+}
+@mixin progress($fill, $background){
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    color: $fill;
+    box-shadow: none;
+    border: none;
+    &::-moz-progress-bar {
+        background-image: -moz-linear-gradient(left, $fill, $fill);
+    }
+    &::-webkit-progress-value {
+        background: $fill;
+    }
+    &::-webkit-progress-bar {
+        background: $background;
+    }
+}

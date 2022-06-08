@@ -1,0 +1,28 @@
+# docker-compose.dev.yml
+
+version: "3.7"
+
+services:
+  nginx:
+    volumes:
+      - type: bind
+        source: ./nginx/default.conf
+        target: /etc/nginx/conf.d/default.conf
+  
+  ssilva-frontend:
+    build:
+      context: ./original-frontend
+      dockerfile: Dockerfile.dev
+    volumes:
+      - type: bind
+        source: ./original-frontend
+        target: /app
+  
+  ssilva-backend:
+    build:
+      context: ./original-backend
+      dockerfile: Dockerfile.dev
+    volumes:
+      - type: bind
+        source: ./original-backend
+        target: /app

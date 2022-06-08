@@ -1,0 +1,15 @@
+[
+{
+    "model": "empresas_and_proyectos.etapa",
+    "fields": {
+        "Name": "Inicial",
+        "SalesStartDate": "2022-02-18",
+        "EtapaStateID": [
+            "En blanco"
+        ],
+        "ProyectoID": [
+            "Amengual"
+        ]
+    }
+}
+]

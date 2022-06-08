@@ -1,0 +1,86 @@
+[
+    {
+        "model": "empresas_and_proyectos.userinmobiliaria",
+        "fields": {
+            "UserID": [
+                "888888888"
+            ],
+            "InmobiliariaID": [
+                "Inmobiliaria de Prueba"
+            ],
+            "UserInmobiliariaTypeID": [
+                "Representante"
+            ]
+        }
+    },
+    {
+        "model": "empresas_and_proyectos.userinmobiliaria",
+        "fields": {
+            "UserID": [
+                "999999999"
+            ],
+            "InmobiliariaID": [
+                "Inmobiliaria de Prueba"
+            ],
+            "UserInmobiliariaTypeID": [
+                "Aprobador"
+            ]
+        }
+    },
+    {
+        "model": "empresas_and_proyectos.userinmobiliaria",
+        "fields": {
+            "UserID": [
+                "010101010"
+            ],
+            "InmobiliariaID": [
+                "Inmobiliaria de Prueba"
+            ],
+            "UserInmobiliariaTypeID": [
+                "Autorizador"
+            ]
+        }
+    },
+    {
+    "model": "empresas_and_proyectos.userinmobiliaria",
+    "fields": {
+        "UserID": [
+            "77421912"
+        ],
+        "InmobiliariaID": [
+            "INMOBILIARIA FORTALEZA PLACILLA SPA"
+        ],
+        "UserInmobiliariaTypeID": [
+            "Representante"
+        ]
+    }
+},
+{
+    "model": "empresas_and_proyectos.userinmobiliaria",
+    "fields": {
+        "UserID": [
+            "77421912"
+        ],
+        "InmobiliariaID": [
+            "INMOBILIARIA FORTALEZA PLACILLA SPA"
+        ],
+        "UserInmobiliariaTypeID": [
+            "Aprobador"
+        ]
+    }
+},
+{
+    "model": "empresas_and_proyectos.userinmobiliaria",
+    "fields": {
+        "UserID": [
+            "7667227k"
+        ],
+        "InmobiliariaID": [
+            "INMOBILIARIA FORTALEZA PLACILLA SPA"
+        ],
+        "UserInmobiliariaTypeID": [
+            "Aprobador"
+        ]
+    }
+}
+]

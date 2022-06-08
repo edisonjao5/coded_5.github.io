@@ -1,0 +1,35 @@
+//GOOGLE FONTS
+//// PATHS
+$webfont-path: "../fonts/webfonts/" !default;
+$icon_rute: '../fonts/iconfonts/';
+$tello_rute: '../fonts/fontello/';
+
+//// IMPORTS
+@import 'webfonts';
+@import '../../fonts/fontello/fontello';
+@import '../../fonts/iconfonts/icon';
+
+///// VARIABLES
+//--------------------
+$segoe: 'Segoe Ui', sans-serif;
+$main_font: $segoe;
+
+///// MODIFY
+.icon.icon-circle{
+    position: relative;
+    display: inline-block;
+    width: 2em;
+    height: 2em;
+    background-color: black;
+    color: white;
+    border-radius: 50%;
+    &:before{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+}
+.pl-6{
+    padding-left: 2.5rem !important;
+}

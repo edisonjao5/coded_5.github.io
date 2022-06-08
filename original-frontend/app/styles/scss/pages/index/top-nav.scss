@@ -1,0 +1,88 @@
+.top-nav{
+    margin-top: 1em;
+    @media(max-width: 991px){
+        font-size: 0.8em;
+    }
+    .title-link{
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        line-height: 1;
+        font-size: 2em;
+        color: $main_darken;
+        font-weight: 300;
+        >span{
+            color: #94a0ad;
+            &:last-of-type{
+                color: #393f50;
+            }
+        }
+        .dropdown{
+            >a{
+                order: 2;
+                color: $main_color;
+                position: relative;
+                top: 0.1em;
+                font-size: 0.8em;
+                margin-left: 0.5em;
+            }
+        }
+    }
+    ul{
+        margin: 0; 
+        //padding: 0;
+        position: relative;
+        li{
+            font-size: 1.75em;
+            //position: unset;
+            >a{
+                color: $main_grayness;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 1.5em;
+                height: 1.5em;
+                position: relative;
+                z-index: 2;
+                border: 1px solid rgba(gray, 0);
+                &[aria-expanded=false]{
+                    &:after{
+                        content: none;
+                    }
+                }
+                &[aria-expanded=true]{
+                    color: $main_color;
+                }
+                &:after{
+                    content: "";
+                    position: absolute;
+                    top: 100%;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    width: 11px;
+                    height: 9px;
+                    background-image: url(../images/arrow_dropdown.png);
+                    background-size: 100%;
+                    background-repeat: no-repeat;  
+                }
+                &:hover{
+                    color: $main_color;
+                }
+                &.circle-icon{
+                    background-color: white;
+                    border-radius: 50%;
+                    border: 1px solid rgba(gray, 0.2);
+                }
+            }
+            >div{
+                top: 100% !important;
+                left: inherit !important;
+                left: initial !important;
+                right: 0 !important;
+                transform: none !important;
+                margin-top: 0.45em;
+                //z-index: 1;
+            }
+        }
+    }
+}

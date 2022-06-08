@@ -1,0 +1,322 @@
+[
+    {
+        "model": "auth.user",
+        "fields": {
+            "password": "pbkdf2_sha256$320000$xv4wWreHWFxdbM4oARoqP0$5V3PUbVTX555fr0o2U/wsMyU44cUD5KhnnfqIlJP3sk=",
+            "is_superuser": true,
+            "username": "000000000",
+            "is_staff": true,
+            "is_active": true
+        }
+    },
+    {
+        "model": "auth.user",
+        "fields": {
+            "password": "pbkdf2_sha256$320000$xv4wWreHWFxdbM4oARoqP0$5V3PUbVTX555fr0o2U/wsMyU44cUD5KhnnfqIlJP3sk=",
+            "is_superuser": true,
+            "username": "111111111",
+            "is_staff": true,
+            "is_active": true
+        }
+    },
+    {
+        "model": "auth.user",
+        "fields": {
+            "password": "pbkdf2_sha256$320000$xv4wWreHWFxdbM4oARoqP0$5V3PUbVTX555fr0o2U/wsMyU44cUD5KhnnfqIlJP3sk=",
+            "is_superuser": true,
+            "username": "222222222",
+            "is_staff": true,
+            "is_active": true
+        }
+    },
+    {
+        "model": "auth.user",
+        "fields": {
+            "password": "pbkdf2_sha256$320000$xv4wWreHWFxdbM4oARoqP0$5V3PUbVTX555fr0o2U/wsMyU44cUD5KhnnfqIlJP3sk=",
+            "is_superuser": true,
+            "username": "333333333",
+            "is_staff": true,
+            "is_active": true
+        }
+    },
+    {
+        "model": "auth.user",
+        "fields": {
+            "password": "pbkdf2_sha256$320000$xv4wWreHWFxdbM4oARoqP0$5V3PUbVTX555fr0o2U/wsMyU44cUD5KhnnfqIlJP3sk=",
+            "is_superuser": true,
+            "username": "444444444",
+            "is_staff": true,
+            "is_active": true
+        }
+    },
+    {
+        "model": "auth.user",
+        "fields": {
+            "password": "pbkdf2_sha256$320000$xv4wWreHWFxdbM4oARoqP0$5V3PUbVTX555fr0o2U/wsMyU44cUD5KhnnfqIlJP3sk=",
+            "is_superuser": true,
+            "username": "555555555",
+            "is_staff": true,
+            "is_active": true
+        }
+    },
+    {
+        "model": "auth.user",
+        "fields": {
+            "password": "pbkdf2_sha256$320000$xv4wWreHWFxdbM4oARoqP0$5V3PUbVTX555fr0o2U/wsMyU44cUD5KhnnfqIlJP3sk=",
+            "is_superuser": true,
+            "username": "666666666",
+            "is_staff": true,
+            "is_active": true
+        }
+    },
+    {
+        "model": "auth.user",
+        "fields": {
+            "password": "pbkdf2_sha256$320000$xv4wWreHWFxdbM4oARoqP0$5V3PUbVTX555fr0o2U/wsMyU44cUD5KhnnfqIlJP3sk=",
+            "is_superuser": true,
+            "username": "777777777",
+            "is_staff": true,
+            "is_active": true
+        }
+    },
+    {
+        "model": "auth.user",
+        "fields": {
+            "password": "pbkdf2_sha256$320000$xv4wWreHWFxdbM4oARoqP0$5V3PUbVTX555fr0o2U/wsMyU44cUD5KhnnfqIlJP3sk=",
+            "is_superuser": true,
+            "username": "888888888",
+            "is_staff": true,
+            "is_active": true
+        }
+    },
+    {
+        "model": "auth.user",
+        "fields": {
+            "password": "pbkdf2_sha256$320000$xv4wWreHWFxdbM4oARoqP0$5V3PUbVTX555fr0o2U/wsMyU44cUD5KhnnfqIlJP3sk=",
+            "is_superuser": true,
+            "username": "999999999",
+            "is_staff": true,
+            "is_active": true
+        }
+    },
+    {
+        "model": "auth.user",
+        "fields": {
+            "password": "pbkdf2_sha256$320000$xv4wWreHWFxdbM4oARoqP0$5V3PUbVTX555fr0o2U/wsMyU44cUD5KhnnfqIlJP3sk=",
+            "is_superuser": true,
+            "username": "010101010",
+            "is_staff": true,
+            "is_active": true
+        }
+    },
+    {
+        "model": "auth.user",
+        "fields": {
+            "password": "pbkdf2_sha256$120000$bTsTyxestQQI$M+Uq544BChtMWmF7AOLIfWTENevHTHbMyk2Gci0Px2s=",
+            "is_superuser": true,
+            "username": "189806973",
+            "is_staff": true,
+            "is_active": true
+        }
+    },
+    {
+        "model": "auth.user",
+        "fields": {
+            "password": "pbkdf2_sha256$120000$bTsTyxestQQI$M+Uq544BChtMWmF7AOLIfWTENevHTHbMyk2Gci0Px2s=",
+            "is_superuser": false,
+            "username": "95771394",
+            "is_staff": false,
+            "is_active": true
+        }
+    },
+    {
+        "model": "auth.user",
+        "fields": {
+            "password": "pbkdf2_sha256$120000$bTsTyxestQQI$M+Uq544BChtMWmF7AOLIfWTENevHTHbMyk2Gci0Px2s=",
+            "is_superuser": false,
+            "username": "72163141",
+            "is_staff": false,
+            "is_active": true
+        }
+    },
+    {
+        "model": "auth.user",
+        "fields": {
+            "password": "pbkdf2_sha256$120000$bTsTyxestQQI$M+Uq544BChtMWmF7AOLIfWTENevHTHbMyk2Gci0Px2s=",
+            "is_superuser": false,
+            "username": "124730767",
+            "is_staff": false,
+            "is_active": true
+        }
+    },
+    {
+        "model": "auth.user",
+        "fields": {
+            "password": "pbkdf2_sha256$120000$bTsTyxestQQI$M+Uq544BChtMWmF7AOLIfWTENevHTHbMyk2Gci0Px2s=",
+            "is_superuser": false,
+            "username": "122652246",
+            "is_staff": false,
+            "is_active": true
+        }
+    },
+    {
+        "model": "auth.user",
+        "fields": {
+            "password": "pbkdf2_sha256$120000$bTsTyxestQQI$M+Uq544BChtMWmF7AOLIfWTENevHTHbMyk2Gci0Px2s=",
+            "is_superuser": false,
+            "username": "77421912",
+            "is_staff": false,
+            "is_active": true
+        }
+    },
+    {
+        "model": "auth.user",
+        "fields": {
+            "password": "pbkdf2_sha256$120000$bTsTyxestQQI$M+Uq544BChtMWmF7AOLIfWTENevHTHbMyk2Gci0Px2s=",
+            "is_superuser": false,
+            "username": "7667227k",
+            "is_staff": false,
+            "is_active": true
+        }
+    },
+    {
+        "model": "auth.user",
+        "fields": {
+            "password": "pbkdf2_sha256$120000$bTsTyxestQQI$M+Uq544BChtMWmF7AOLIfWTENevHTHbMyk2Gci0Px2s=",
+            "is_superuser": true,
+            "username": "174032203",
+            "is_staff": true,
+            "is_active": true
+        }
+    },
+    {
+        "model": "auth.user",
+        "fields": {
+            "password": "pbkdf2_sha256$120000$bTsTyxestQQI$M+Uq544BChtMWmF7AOLIfWTENevHTHbMyk2Gci0Px2s=",
+            "is_superuser": true,
+            "username": "184327171",
+            "is_staff": true,
+            "is_active": true
+        }
+    },
+    {
+        "model": "auth.user",
+        "fields": {
+            "password": "pbkdf2_sha256$120000$bTsTyxestQQI$M+Uq544BChtMWmF7AOLIfWTENevHTHbMyk2Gci0Px2s=",
+            "is_superuser": false,
+            "username": "57888032",
+            "is_staff": false,
+            "is_active": true
+        }
+    },
+    {
+        "model": "auth.user",
+        "fields": {
+            "password": "pbkdf2_sha256$120000$bTsTyxestQQI$M+Uq544BChtMWmF7AOLIfWTENevHTHbMyk2Gci0Px2s=",
+            "is_superuser": false,
+            "username": "51360761",
+            "is_staff": false,
+            "is_active": true
+        }
+    },
+    {
+        "model": "auth.user",
+        "fields": {
+            "password": "pbkdf2_sha256$120000$bTsTyxestQQI$M+Uq544BChtMWmF7AOLIfWTENevHTHbMyk2Gci0Px2s=",
+            "is_superuser": false,
+            "username": "60657483",
+            "is_staff": false,
+            "is_active": true
+        }
+    },
+    {
+        "model": "auth.user",
+        "fields": {
+            "password": "pbkdf2_sha256$120000$bTsTyxestQQI$M+Uq544BChtMWmF7AOLIfWTENevHTHbMyk2Gci0Px2s=",
+            "is_superuser": false,
+            "username": "64004662",
+            "is_staff": false,
+            "is_active": true
+        }
+    },
+    {
+        "model": "auth.user",
+        "fields": {
+            "password": "pbkdf2_sha256$120000$bTsTyxestQQI$M+Uq544BChtMWmF7AOLIfWTENevHTHbMyk2Gci0Px2s=",
+            "is_superuser": false,
+            "username": "172507654",
+            "is_staff": false,
+            "is_active": true
+        }
+    },
+    {
+        "model": "auth.user",
+        "fields": {
+            "password": "pbkdf2_sha256$120000$bTsTyxestQQI$M+Uq544BChtMWmF7AOLIfWTENevHTHbMyk2Gci0Px2s=",
+            "is_superuser": false,
+            "username": "120750682",
+            "is_staff": false,
+            "is_active": true
+        }
+    },
+    {
+        "model": "auth.user",
+        "fields": {
+            "password": "pbkdf2_sha256$120000$bTsTyxestQQI$M+Uq544BChtMWmF7AOLIfWTENevHTHbMyk2Gci0Px2s=",
+            "is_superuser": false,
+            "username": "144680057",
+            "is_staff": false,
+            "is_active": true
+        }
+    },
+    {
+        "model": "auth.user",
+        "fields": {
+            "password": "pbkdf2_sha256$120000$bTsTyxestQQI$M+Uq544BChtMWmF7AOLIfWTENevHTHbMyk2Gci0Px2s=",
+            "is_superuser": false,
+            "username": "137131641",
+            "is_staff": false,
+            "is_active": true
+        }
+    },
+    {
+        "model": "auth.user",
+        "fields": {
+            "password": "pbkdf2_sha256$120000$bTsTyxestQQI$M+Uq544BChtMWmF7AOLIfWTENevHTHbMyk2Gci0Px2s=",
+            "is_superuser": false,
+            "username": "171684129",
+            "is_staff": false,
+            "is_active": true
+        }
+    },
+    {
+        "model": "auth.user",
+        "fields": {
+            "password": "pbkdf2_sha256$120000$bTsTyxestQQI$M+Uq544BChtMWmF7AOLIfWTENevHTHbMyk2Gci0Px2s=",
+            "is_superuser": false,
+            "username": "84025259",
+            "is_staff": false,
+            "is_active": true
+        }
+    },
+    {
+        "model": "auth.user",
+        "fields": {
+            "password": "pbkdf2_sha256$120000$bTsTyxestQQI$M+Uq544BChtMWmF7AOLIfWTENevHTHbMyk2Gci0Px2s=",
+            "is_superuser": false,
+            "username": "66358909",
+            "is_staff": false,
+            "is_active": true
+        }
+    },
+    {
+        "model": "auth.user",
+        "fields": {
+            "password": "pbkdf2_sha256$120000$bTsTyxestQQI$M+Uq544BChtMWmF7AOLIfWTENevHTHbMyk2Gci0Px2s=",
+            "is_superuser": false,
+            "username": "136726633",
+            "is_staff": false,
+            "is_active": true
+        }
+    }
+]

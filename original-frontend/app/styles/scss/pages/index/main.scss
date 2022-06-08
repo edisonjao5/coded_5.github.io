@@ -1,0 +1,41 @@
+#main_page{
+    @import 'modular.scss'; 
+    @import 'filters-01.scss';
+    @import 'financing-form';
+    >[class*=container]{
+        margin-top: 1.25em;
+        padding-bottom: 4em;
+        @media (min-width: 1200px){
+            max-width: 1240px;
+        }
+        >.row{
+            margin-right: 0;
+            margin-left: 0;
+        }
+        header{
+            padding-left: 0;
+            padding-right: 0;
+            width: initial;
+            width: inherit;
+            @media(min-width: 992px){
+                margin-right: 2em;
+            }
+            >figure{
+                max-width: 9em;
+            }
+        }
+        main{
+            padding-bottom: 3em;
+            padding: 0;
+            //import the modules of page
+            @import 'progress-bar.scss'; 
+            @import 'top-nav.scss'; 
+            @import 'dash-card.scss'; 
+            @import 'goals.scss'; 
+            @import 'proyect-group.scss'; 
+            @import 'proyect-navigation-menu';
+            @import 'ficha-pre-aprobacion'; 
+        }
+    }
+    @import 'seleccion-inmuebles-modal.scss'; 
+}

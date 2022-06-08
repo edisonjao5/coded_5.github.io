@@ -1,0 +1,12 @@
+@font-face {
+	font-family: "fontello";
+	src: url('#{$tello_rute}fontello.woff2') format('woff2');
+}
+
+.icon-z-info:before {
+	font-family: "fontello" !important;
+	content: "\E800";
+	position: absolute;
+	font-size: 1rem;
+	margin: .2rem 0 0 .5rem;
+}

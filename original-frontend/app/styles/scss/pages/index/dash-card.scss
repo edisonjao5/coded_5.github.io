@@ -1,0 +1,54 @@
+.dash-card-container{
+    background-color: white;
+    box-shadow: 0 7px 14px 0 rgba(60,66,87, 0.1), 0 3px 6px 0 rgba(0, 0, 0, .07);
+    padding: 0;
+    border-radius: 5px;
+    position: relative;
+    overflow: hidden;
+    .row{
+        .dash-card{
+            &.col-lg-6{
+                @media(min-width: 992px){
+                    &:nth-child(odd){
+                        border-right: 1px solid #e3e8ee;
+                    }
+                }
+            }
+            &.col-12{
+                @media(max-width: 991px){
+                    border-top: 1px solid #e3e8ee;
+                    &:first-child{
+                        border-top: none;
+                    }
+                }
+            }
+            .box{
+                background-color: white;
+                padding: 1.5em;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+                >span{
+                    line-height: 1;
+                }
+                .sub-title{
+                    font-size: 0.875em;
+                    font-weight: 600;
+                }
+                .title{
+                    font-size: 2.5em;
+                    font-weight: 400;
+                    color: $main_color;
+                    margin-top: 0.25em;
+                    @media(max-width: 991px){
+                        font-size: 1.75em;
+                    }
+                    b{
+                        font-weight: 700;
+                    }
+                }
+            }
+        }
+    }
+}

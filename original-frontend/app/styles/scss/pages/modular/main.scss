@@ -1,0 +1,53 @@
+#main_page{
+    .icon.icon-circle{
+        position: relative;
+        display: inline-block;
+        width: 2em;
+        height: 2em;
+        background-color: black;
+        color: white;
+        border-radius: 50%;
+        &:before{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    }
+    .imgload{
+        background-color: $main_color;
+        background-image: url(../images/img-load.svg);
+        background-position: center;
+        background-repeat: no-repeat; 
+        background-size: 5em;
+    }
+    .color-gray-icon{
+        &:before{
+            color:#6a7175
+        }
+    }
+    .color-white-gray{
+        color:#a1a1a1
+    }
+    .color-white-gray-icon{
+        &:before{
+            color:#a1a1a1
+        }
+    }
+    .color-white-gray-icon-circle{
+        display:flex;
+        align-items:center;
+        &:before{
+            color:#fff;
+            justify-content:center;
+            align-items:center;
+            background-color:#a1a1a1;
+            width:1.5em;
+            height:1.5em;
+            display:flex;
+            border-radius:50%;
+            font-size:.7em;
+            margin-right:.5em
+        }
+    }
+}

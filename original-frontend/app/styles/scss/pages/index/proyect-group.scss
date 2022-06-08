@@ -1,0 +1,180 @@
+.proyect-group{
+    margin-top: 2em;
+    >.title{
+        color: #393f50;
+        font-size: 1.3125em;
+        line-height: 1;
+    }
+}
+.proyect-item-box{
+    margin-top: 1rem;
+    .box{
+        background-color: white;
+        //box-shadow: $medium_shadown;
+        border-radius: 5px;
+        position: relative;
+        overflow: hidden;
+        h4{
+            color: $main_color;
+            background-color: #f5fbff;
+            font-size: 1.3125em;
+            text-transform: uppercase;
+            font-weight: 600;
+            padding: 0.75rem;
+        }
+        .content{
+            cursor: pointer;
+            padding: 0.75rem;
+            height: 280px;
+            .statement{
+                line-height: 1;
+                display: block;
+                text-transform: uppercase;
+                font-weight: 600;
+                color: #393f50;
+                font-size: 0.875em;
+            }
+            .graphics{
+                margin-top: 0.5em;
+                .row{
+                    align-items: center;
+                    align-content: center;
+                    margin-top: 1em;
+                    &:first-child{
+                        margin-top: 0;
+                    }
+                    .title{
+                        font-size: 0.9em;
+                        font-weight: 400;
+                        color: $main_color;
+                        display: flex;
+                        flex-direction: column;
+                        line-height: 1;
+                        b{
+                            font-size: 1.35em;
+                        }
+                    }
+                    .progress-card{
+                        margin-top: 0;
+                        width: 100%;
+                        @media(max-width: 768px){
+                            font-size: 0.8em;
+                        }
+                        span{
+                            margin: 0em;
+                            &.key{
+                                font-size: 0.875em;
+                                margin: 0 0.5rem;
+                            }
+                            &.value{
+                                font-size: 1.3125em;
+                                margin-right: 0.5rem;
+                            }
+                        }
+                        &.green{
+                            border-color: $success;
+                            progress{
+                                @include progress(#dcf5d8, white);
+                            }
+                        }
+                        &.yellow{
+                            border-color: #eadd4c;
+                            progress{
+                                @include progress(#f7f9cd, white);
+                            }
+                        }
+                        &.red{
+                            border-color: #f1946a;
+                            progress{
+                                @include progress(#ffdfe5, white);
+                            }
+                        }
+                    }
+                }
+            }
+            .proyect-links{
+                padding: 0;
+                margin: 1em 0 0 0;
+                li{
+                    padding-top: 0.35em;
+                    padding-bottom: 0.35em;
+                    border-top: 1px solid #e3e8ee;
+                    &:last-child{
+                        border-bottom: 1px solid #e3e8ee;
+                    }
+                    >*{
+                        font-size: 0.875em;
+                        font-weight: 600;
+                    }
+                    span{
+                        color: #94a0ad;
+                    }
+                    a{
+                        color: $main_color;
+                    }
+                }
+            }
+            .status{
+                padding-top: 0.75em;
+                padding-bottom: 0.75em;
+                border-top: 1px solid #e3e8ee;
+                border-bottom: 1px solid #e3e8ee;
+                align-items: center;
+                align-content: center;
+                margin-top: 1em;
+                >*{
+                    font-size: 0.875em;
+                    line-height: 1;
+                }
+                span{
+                    font-weight: 400;
+                    color: #94a0ad;
+                    b{
+                        font-weight: 600;
+                    }
+                }
+                a{
+                    color: $main_color;
+                    &:before{
+                        color: #ff3366;
+                        font-size: 1.1em;
+                    }
+                }
+            }
+            .advance{
+                position: absolute;
+                bottom: 1rem;
+                .title{
+                    line-height: 1;
+                    color: #94a0ad;
+                    font-size: 0.875em;
+                }
+                .percent{
+                    display: flex;
+                    align-items: center;
+                    margin-top: 0.5em;
+                    progress{
+                        @include progress($fill: whitesmoke, $background: white);
+                        &.green{
+                            @include progress($fill: $second_color, $background: white);
+                        }
+                        &.yellow{
+                            @include progress($fill: #eadd4c, $background: white);
+                        }
+                        &.red{
+                            @include progress($fill: #f1946a, $background: white);
+                        }
+                    }
+                    .percent-number{
+                        line-height: 1;
+                        margin-left: 0.5em;
+                        font-size: 0.875em;
+                        font-weight: 600;
+                        color: #393f50;
+                        line-height: 1;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,34 @@
+.goals-module{
+    .heading{}
+    .time-remaining{
+        display: flex;
+        align-items: center;
+        font-size: 0.875em;
+        color: 300;
+        color: $main_darken;
+        &:before{
+            color: $second_color;
+            margin-right: 0.5em;
+        }
+    }
+    .menu{
+        .add, .filter, .search{
+            .icon{
+                &:before{
+                    color: #94a0ad;
+                }
+            }
+        }
+        .search{
+            .icon{
+                &:before{
+                    color: #94a0ad;
+                }
+            }
+            input{
+                @include placeholder($color: #94a0ad);
+                font-weight: 400;
+            }
+        }
+    }
+}

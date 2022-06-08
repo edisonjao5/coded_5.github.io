@@ -1,0 +1,54 @@
+.progress-card{
+    width: 100%;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid gray;
+    border-radius: 5px;
+    margin-top: 0.75em;
+    padding: 0.5em 0;
+    overflow: hidden;
+    progress{
+        @include absolute;
+        z-index: -1;
+        background-color: white;
+        @include progress(#dcf5d8, white);
+    }
+    span{
+        line-height: 1;
+        margin: 0 0.5em;
+        &.key{
+            font-size: 0.875em;
+            font-weight: 600;
+            color: #393f50;
+        }
+        &.value{
+            font-size: 1.5625em;
+            font-weight: 400;
+            color: #94a0ad;
+            b{
+                font-weight: 600;
+            }
+        }
+    }
+    &.green{
+        border-color: $success;
+        progress{
+            @include progress(#dcf5d8, white);
+        }
+    }
+    &.yellow{
+        border-color: #eadd4c;
+        progress{
+            @include progress(#f7f9cd, white);
+        }
+    }
+    &.red{
+        border-color: #f1946a;
+        progress{
+            @include progress(#ffdfe5, white);
+        }
+    }
+}

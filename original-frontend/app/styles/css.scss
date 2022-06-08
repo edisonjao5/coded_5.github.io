@@ -1,0 +1,32 @@
+.json-markup {
+  line-height: 1.5;
+}
+
+.json-markup-key {
+  display: inline !important;
+
+}
+
+.json-markup-key + .json-markup-string:after {
+  display: block;
+  content: '';
+  white-space: pre;
+}
+
+.json-markup-string,
+.json-markup-bool,
+.json-markup-null,
+.json-markup-number {
+  display: inline !important;
+  font-weight: normal;
+}
+
+.datepickers-container {
+  z-index: 1111111111111111111111;
+  margin-top: 0 !important;
+}
+
+.box-inside {
+  margin: 30px -30px -30px -30px;
+  padding: 15px 30px 30px 30px !important;
+}

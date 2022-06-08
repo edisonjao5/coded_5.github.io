@@ -1,0 +1,34 @@
+////////////////////////////////////////////
+$main_color: #067ab8;
+$main_darken: darken($main_color, 25%);
+$main_grayness: lighten(mix(gray, $main_color, 65%), 25%);
+$second_color:  #22a875;
+$success: #1ea672;
+////////////////////////////////////////////
+
+
+$facebook: #3954a1;
+$twitter: #56d7fe;
+$whatsapp: #25d366;
+$instagram: #e95950;
+$youtube: red;
+
+//// UIKIT
+$global-link-color: $main_color;
+$global-link-hover-color: $second_color;
+
+/* Bg color on primary */
+$global-primary-background: $main_color;
+/* Bg color on inverse */
+$global-secondary-background: $second_color;
+/* Other bg */
+$global-success-background: #32d296;
+$global-warning-background: #faa05a;
+$global-danger-background: #f0506e;
+/* Off canvas colors */
+$offcanvas-bar-background: #ffffff;
+$offcanvas-bar-color-mode: none;
+/* Font color */ 
+$global-color: black;
+$global-emphasis-color: $main_color;
+$global-inverse-color: #fff;

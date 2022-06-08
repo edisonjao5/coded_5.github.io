@@ -1,0 +1,34 @@
+// REQUEST
+@import '../core/color.scss';
+@import '~bootstrap/scss/bootstrap.scss';
+@import '~nouislider/distribute/nouislider.css';
+
+$datepickerTextColor: (
+  button: $main_color,
+  otherMonth: #dedede,
+  otherMonthInRange: #ccc,
+  disabled: #aeaeae,
+  currentDate: $main_color,
+  common: #4a4a4a,
+  dayNames: rgba($main_color, 0.4),
+  navArrows: #9c9c9c
+);
+
+$datepickerBG: (
+  selected: $main_color,
+  selectedHover: darken($main_color, 5),
+  inRange: rgba($main_color, .1),
+  hover: #f0f0f0
+);
+
+$datepickerBorderColor: (
+  nav: #efefef,
+  inline: #d7d7d7,
+  default: #dbdbdb
+);
+@import '~air-datepicker/src/sass/datepicker.scss';
+@import '~air-datepicker/src/sass/cell.scss';
+@import '~air-datepicker/src/sass/navigation.scss';
+@import '~air-datepicker/src/sass/timepicker.scss';
+@import '~bootstrap-slider/src/sass/bootstrap-slider.scss';
+//@import 'uikit-custom/uikit-custom.scss';

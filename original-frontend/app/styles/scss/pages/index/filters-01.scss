@@ -1,0 +1,111 @@
+.filter-01{
+    display: flex;
+    align-items: center;
+    padding: 1.5rem;
+    background-color: #f5fbff;
+    @media (max-width: 1199px){
+        flex-wrap: wrap;
+    }
+    >*{
+        margin: 0.5rem;
+    }
+    h5{
+        font-weight: 600;
+        font-size: 0.875em;
+        color: #393f50;
+        text-transform: uppercase;
+        line-height: 1;
+        @media (max-width: 1199px){
+            width: 100%;
+        }
+        //margin: 0;
+    }
+    .select-filter{
+        @media (max-width: 1199px){
+            width: calc(50% - 1rem);
+        }
+    }
+    .search-filter{
+        @media (max-width: 1199px){
+            width: 100%;
+        }
+    }
+    .step-slider{
+        flex: 1;
+        padding: 0 0.5rem;
+        top: 0.5em;
+        position: relative;
+        @media (max-width: 1199px){
+            flex: inherit;
+            flex: initial;
+            width: calc(50% - 1rem);
+        }
+        @media (max-width: 575px){
+            width: 100%;
+        }
+        .step-slider-bar{}
+        >span{
+            color: $main_color;
+            font-weight: 600;
+            display: block;
+            text-align: center;
+            font-size: 0.6875em;
+            margin-top: 0.5em;
+        }
+    }
+}
+.m-filter{
+    display: flex;
+    align-items: center;
+    background-color: #f5fbff;
+    @media (max-width: 1199px){
+        flex-wrap: wrap;
+    }
+    >*{
+        margin: 0.5rem;
+    }
+    h5{
+        font-weight: 600;
+        font-size: 0.875em;
+        color: #393f50;
+        text-transform: uppercase;
+        line-height: 1;
+        @media (max-width: 1199px){
+            width: 100%;
+        }
+        //margin: 0;
+    }
+    .select-filter{
+        @media (max-width: 1199px){
+            width: calc(50% - 1rem);
+        }
+    }
+    .search-filter{
+        @media (max-width: 1199px){
+            width: 100%;
+        }
+    }
+    .step-slider{
+        flex: 1;
+        padding: 0 0.5rem;
+        top: 0.5em;
+        position: relative;
+        @media (max-width: 1199px){
+            flex: inherit;
+            flex: initial;
+            width: calc(50% - 1rem);
+        }
+        @media (max-width: 575px){
+            width: 100%;
+        }
+        .step-slider-bar{}
+        >span{
+            color: $main_color;
+            font-weight: 600;
+            display: block;
+            text-align: center;
+            font-size: 0.6875em;
+            margin-top: 0.5em;
+        }
+    }
+}

@@ -1,0 +1,520 @@
+{% load static %}
+{% load index %}
+{% load i18n %}
+<html>
+  <head>
+      <title></title>
+      <meta http-equiv="content-type" content="text/html; charset=utf-8; url=mailto:correo@mail.com">
+      <style>
+        @page {
+          size: 180mm 275mm;
+          margin: 10mm 20mm 10mm 20mm;
+        }
+        html,  body {
+          height: 100%;
+          font-size: 12px;
+        }
+        .bold {
+          font-weight: 300;
+        }
+        .highlight {
+          background-color: #FFFF00;
+        }
+        .logo{
+          width: 120px;
+          height: 40px;
+        }
+        p {
+          font-size: {{ tamaño_letra }}%;
+          font-weight: lighter;
+        }
+        table {
+          width: 100%; 
+          font-size: {{ tamaño_letra }}%;
+          border-spacing: 0;
+        }
+        tr {
+          height: 15px;
+        }
+        th, td {
+          padding: 0;
+          border: none;
+        }
+      </style>
+  </head>
+  <body>
+    {% language 'es' %}
+    <table >
+      <tr style="height:50px;">
+        <th>
+          <img class="logo" align="left" src="{% static 'logo.png' %}">
+        </th>
+        <th style="font-size: {{ tamaño_letra }}%; vertical-align:bottom; text-align: right; margin-bottom: 0;">
+          <h4 style="margin:0; font-weight:bold">COTIZACIÓN</h4>
+          <h4 style="margin:0;font-weight:lighter">{{ Folio }}</h4>
+          {% now "d" as day %}
+          {% now "F" as month %}
+          {% now "Y" as year %}
+          <h4 style="margin:0;font-weight:lighter">
+            {{ proyecto.ComunaID.ProvinciaID.Name }}, {{ day }} de {{ month }} de {{ year }}
+          </h4>
+        </th>
+      </tr>
+    </table>
+    <br>
+    <div>
+      <p style="margin:0; font-weight:bold"> Señor(a) </p>
+      <p style="margin:0; font-weight:bold"> {{ cliente }} </p>
+      <p style="text-decoration:underline;margin:0"> Presente</p>
+      <p style="margin-top:2px;"> Estimado(a) cliente:</p>
+      <p style="margin-top:1px;">
+          De acuerdo a lo solicitado, nos es muy grato cotizar por los inmuebles que se indican, correspondientes al proyecto
+          <strong> {{ proyecto.Name }},</strong>
+          ubicado en {{ proyecto.Address }}, comuna de {{ proyecto.ComunaID.Name}}, provincia de {{ proyecto.ComunaID.ProvinciaID.Name }}:
+      </p>
+    </div>
+    <h2 style="font-size: 80%; margin-bottom:0">
+        <strong>
+            1. <span style="text-decoration:underline">INMUEBLES</span>
+        </strong>
+    </h2>
+    <table>
+      {% for cotizacion_inmueble in inmuebles_a_cotizar %}
+        <tr>
+          <td style="padding-left: 5px">
+            {{ cotizacion_inmueble.InmuebleID.InmuebleTypeID.Name }}
+            {% if cotizacion_inmueble.InmuebleID.IsNotUsoyGoce %}
+              (UyG)
+            {% endif %}
+          </td>
+          <td >N°{{ cotizacion_inmueble.InmuebleID.Number }}</td>
+          <td>
+            {% if cotizacion_inmueble.InmuebleID.Floor %}
+              del Piso N°{{ cotizacion_inmueble.InmuebleID.Floor }}
+            {% else %}
+              del 1er. Piso
+            {% endif %}
+
+            {% if cotizacion_inmueble.InmuebleID.Orientation %}
+              ( {% for ori in cotizacion_inmueble.InmuebleID.Orientation %}
+                  {{ori.Description}} -
+                {% endfor %} )
+            {% endif %}
+
+            {% if cotizacion_inmueble.InmuebleID.InmuebleTypeID.Name == "Departamento" %}
+            , {{ cotizacion_inmueble.InmuebleID.BedroomsQuantity }}D{{ cotizacion_inmueble.InmuebleID.BathroomQuantity }}B
+            {% endif %}
+          </td>
+          <td style="text-align: center;">UF</td>
+          <td style="text-align: right;">
+            {% if cotizacion_inmueble.Discount %}
+              {% with discount_uf=cotizacion_inmueble.InmuebleID.Price|discount:cotizacion_inmueble.Discount %}
+                {% with total_uf=cotizacion_inmueble.InmuebleID.Price|subtract:discount_uf %}
+                  {{ total_uf | floatformat:2 }}
+                {% endwith %}
+              {% endwith %}
+            {% else %}
+                {{ cotizacion_inmueble.InmuebleID.Price | floatformat:2 }}
+            {% endif %}   
+          </td>            
+          <td style="text-align: center;">$</td>
+          <td style="text-align: right; padding-right: 5px;">
+            {% if cotizacion_inmueble.Discount %}
+              {% with cotizacion_inmueble.InmuebleID.Price|discount:cotizacion_inmueble.Discount as discount_uf %}
+                  {% with total_uf=cotizacion_inmueble.InmuebleID.Price|subtract:discount_uf %}
+                      {% with total_pesos=total_uf|multiply:uf %}
+                          {{ total_pesos | numberformat }}
+                      {% endwith %}
+                  {% endwith %}
+              {% endwith %}
+            {% else %}
+              {% with cotizacion_inmueble.InmuebleID.Price|multiply:uf as valor %}
+                  {{ valor | numberformat }}
+              {% endwith %}
+            {% endif %}    
+          </td>
+        </tr>
+      {% endfor %}
+      {% if porcentaje_departments_discount %}
+        <tr style="height: 16px;">
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td style="font-weight:bold;">PRECIO DE LISTA</td>
+          <td style="text-align: center;font-weight:bold; padding-top: 1px;border-top: 0.8px solid #000000;">UF</td>
+          <td style="text-align: right;font-weight:bold; padding-top: 1px;border-top: 0.8px solid #000000;">
+            {{ total | floatformat:2 }}
+          </td>
+          <td style="text-align: center;font-weight:bold; padding-top: 1px;border-top: 0.8px solid #000000;">$</td>
+          <td style="text-align: right;font-weight:bold; padding-top: 1px;border-top: 0.8px solid #000000; padding-right: 5px;">
+            {% with total_pesos=total|multiply:uf %}
+              {{ total_pesos | numberformat }}
+            {% endwith %}
+          </td>
+        </tr>
+
+        <tr style="height: 16px;">
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td style="font-weight:bold;">
+            {{porcentaje_departments_discount}}% Dscto. sólo en Depto.
+          </td>
+          <td style="text-align: center;font-weight:bold;">UF</td>
+          <td style="text-align: right;font-weight:bold;">
+            {{ total_departments_discount | floatformat:2 }}
+          </td>
+          <td style="text-align: center;font-weight:bold;">$</td>
+          <td style="text-align: right;font-weight:bold; padding-right: 5px;">
+            {% with total_pesos=total_departments_discount|multiply:uf %}
+              {{ total_pesos | numberformat }}
+            {% endwith %}
+          </td>
+        </tr>
+      {% endif %}
+      <tr style="height: 20px; width: 100%;">
+        <td style="width: 25%">&nbsp;</td>
+        <td style="width: 10%">&nbsp;</td>
+        <td style="width: 30%;font-weight:bold;">PRECIO DE VENTA</td>
+        <td style="width: 5%;text-align: center;font-weight:bold; padding-top: 1px;border-top: 0.8px solid #000000;">UF</td>
+        <td style="width: 12%;text-align: right;font-weight:bold; padding-top: 1px;border-top: 0.8px solid #000000;">
+          {% with total_pesos=total|subtract:total_departments_discount %}
+            {{ total_pesos | floatformat:2 }}
+          {% endwith %}
+        </td>
+        <td style="width: 5%;text-align: center;font-weight:bold; padding-top: 1px;border-top: 0.8px solid #000000;">$</td>
+        <td style="width: 13%;text-align: right;font-weight:bold; padding-top: 1px;border-top: 0.8px solid #000000; padding-right: 5px;">
+          {% with val=total|subtract:total_departments_discount %}
+            {% with total_pesos=val|multiply:uf %}
+              {{ total_pesos | numberformat }}
+            {% endwith %}
+          {% endwith %}
+        </td>
+      </tr>
+    </table>
+
+    <h2 style="font-size: 80%">
+      <strong>
+        2. <span style="text-decoration:underline"> FORMA DE PAGO </span>
+      </strong>
+    </h2>
+
+    <table style="left: 15px; position: relative;">
+      {% if total_cuotas %}
+      <tr>
+        <td style="padding-left: 5px">En {{ cuotas_data|length }} cuota(s)</td>
+        <td style="text-align: right;">{{ porcentaje_cuotas | floatformat:2 }}% </td>
+        <td style="text-align: left; padding-left: 5px"> Cuota(s) de UF 
+          {% with len=cuotas_data|length %}
+            {% with div_val=total_cuotas|div:len %}
+              {{ div_val | floatformat:2 }}
+            {% endwith %} c/u.
+          {% endwith %}
+        </td>
+        <td style="text-align: center;">UF</td>
+        <td style="text-align: right;">{{ total_cuotas | floatformat:2 }}</td>            
+        <td style="text-align: center;">$</td>
+        <td style="text-align: right;">          
+          {% with total_pesos=total_cuotas|multiply:uf %}
+            {{ total_pesos | numberformat }}
+          {% endwith %}
+        </td>
+      </tr>      
+      {% endif %}
+
+      {% if total_firma_promesa %}
+      <tr>
+        <td style="padding-left: 5px">A la firma de Promesa</td>
+        <td style="text-align: right;">
+          {{ porcentaje_firma_promesa | floatformat:2 }}%
+        </td>
+        <td></td>
+        <td style="text-align: center;">UF</td>
+        <td style="text-align: right;">
+          {{ total_firma_promesa | floatformat:2 }}
+        </td>            
+        <td style="text-align: center;">$</td>
+        <td style="text-align: right;">
+          {% with total_pesos=total_firma_promesa|multiply:uf %}
+            {{ total_pesos | numberformat }}
+          {% endwith %}
+        </td>
+      </tr>
+      {% endif %}
+      {% if total_firma_escritura %}
+      <tr>
+        <td style="padding-left: 5px">A la firma de Escritura</td>
+        <td style="text-align: right;">{{ porcentaje_firma_escritura | floatformat:2 }}%</td>
+        <td></td>
+        <td style="text-align: center;">UF</td>
+        <td style="text-align: right;">{{ total_firma_escritura | floatformat:2 }}</td>            
+        <td style="text-align: center;">$</td>
+        <td style="text-align: right;">
+          {% with total_pesos=total_firma_escritura|multiply:uf %}
+            {{ total_pesos | numberformat }}
+          {% endwith %}
+        </td>
+      </tr>      
+      {% endif %}
+      
+      {% if total_subsidio %}
+      <tr>
+        <td style="padding-left: 5px">Pago con subsidio</td>
+        <td style="text-align: right;">{{ porcentaje_subsidio | floatformat:2 }}%</td>
+        <td></td>
+        <td style="text-align: center;">UF</td>
+        <td style="text-align: right;">{{ total_subsidio | floatformat:2 }}</td>            
+        <td style="text-align: center;">$</td>
+        <td style="text-align: right;">
+          {% with total_pesos=total_subsidio|multiply:uf %}
+            {{ total_pesos | numberformat }}
+          {% endwith %}
+        </td>
+      </tr>      
+      {% endif %}
+
+      {% if total_libreta %}
+      <tr>
+        <td style="padding-left: 5px">Libreta de Ahorro</td>
+        <td style="text-align: right;">{{ porcentaje_libreta | floatformat:2 }}%</td>
+        <td></td>
+        <td style="text-align: center;">UF</td>
+        <td style="text-align: right;">{{ total_libreta | floatformat:2 }}</td>            
+        <td style="text-align: center;">$</td>
+        <td style="text-align: right;">
+          {% with total_pesos=total_libreta|multiply:uf %}
+            {{ total_pesos | numberformat }}
+          {% endwith %}
+        </td>
+      </tr>      
+      {% endif %}
+
+      {% if total_credito %}
+      <tr>
+        <td style="padding-left: 5px">Crédito Inst. Financiera</td>
+        <td style="text-align: right;">
+          {{ porcentaje_credito | floatformat:2 }}%
+        </td>
+        <td></td>
+        <td style="text-align: center;">UF</td>
+        <td style="text-align: right;">
+          {{ total_credito | floatformat:2 }}
+        </td>            
+        <td style="text-align: center;">$</td>
+        <td style="text-align: right;">
+          {% with total_pesos=total_credito|multiply:uf %}
+            {{ total_pesos | numberformat }}
+          {% endwith %}
+        </td>
+        <td style="text-align: right;width: 20px;">(*)</td>
+      </tr>
+      {% endif %}
+
+      {% if ahorro_plus %}
+      <tr>
+        <td style="padding-left: 5px">Ahorro Plus</td>
+        <td style="text-align: right;">
+          {{ porcentaje_ahorro | floatformat:2 }}%
+        </td>
+        <td></td>
+        <td style="text-align: center;">UF</td>
+        <td style="text-align: right;">
+          {{ ahorro_plus | floatformat:2 }}
+        </td>            
+        <td style="text-align: center;">$</td>
+        <td style="text-align: right;">
+          {% with total_pesos=ahorro_plus|multiply:uf %}
+            {{ total_pesos | numberformat }}
+          {% endwith %}
+        </td>
+      </tr>
+      {% endif %}
+      <tr style="height: 20px; width: 100%;">
+        <td style="width: 28%">&nbsp;</td>
+        <td style="width: 10%">&nbsp;</td>
+        <td style="width: 25%">&nbsp;</td>
+        <td style="width: 7%;text-align: center;font-weight: bold;border-top: 0.8px solid #000000;">UF</td>
+        <td style="width: 12%;text-align: right;font-weight: bold;border-top: 0.8px solid #000000;">
+          {{ total | floatformat:2 }}
+        </td>
+        <td style="width: 5%;text-align: center;font-weight: bold;border-top: 0.8px solid #000000;">$</td>
+        <td style="width: 13%;text-align: right;font-weight: bold;border-top: 0.8px solid #000000;">
+          {% with total_pesos=total|multiply:uf %}
+            {{ total_pesos | numberformat }}
+          {% endwith %}
+        </td>
+        <td style="width: 3%">&nbsp;</td>
+      </tr>
+    </table>
+    {% if total_credito %}
+    <table>
+      <tr style="height: 30px;">
+        <td style="vertical-align:top; width:20px">(*)</td>
+        <td>El (la) cotizante declara conocer cuáles son los requerimientos exigidos para optar a un crédito o mutuo hipotecario y
+          que las instituciones financieras los cursan con la tasa vigente a la fecha en que se formalice la compraventa.</td>
+      </tr>
+    </table>
+    {% endif %}
+
+    {% if total_credito %}
+    <h2 style="font-size: 80%">
+      <strong>
+        3. <span style="text-decoration:underline"> DIVIDENDO APROXIMADO REFERENCIAL </span>
+      </strong>
+    </h2>
+    <p style="padding-left:5px">
+      Calculado a la tasa referencial de este día, sin considerar seguros: {{ porcentaje_tasa }}%.
+    </p>
+
+    <table style="text-align:center; width:fit-content;">
+      <tr style="height: 30px;">
+        <th style="width: 5px; border-right: 0.8px solid #000;">&nbsp;</th>
+        <th style="width: 90px; padding-top: 2px; border: 0.8px solid #000; border-left: none;">Plazo Crédito Inst. Financiera</th>
+        <th style="width: 60px; padding-top: 2px; border: 0.8px solid #000; border-left: none;">Dividendo en UF</th>
+        <th style="width: 60px; padding-top: 2px; border:0.8px solid #000000; border-left: none;">Dividendo en $</th>
+        <th style="width: 90px; padding-top: 2px; border:0.8px solid #000000;border-left: none;">Renta mínima aproximada $</th>
+      </tr>      
+      <tr>
+        <td style="border-right: 0.8px solid #000;">&nbsp;</td>
+        <td style="border-right:0.8px solid #000000; border-bottom:0.8px solid #000000; padding-top: 2px;">
+          8 años
+        </td>
+        <td style="border-right:0.8px solid #000000; border-bottom:0.8px solid #000000; padding-top: 2px;">
+          {{ plazo_8.1 | floatformat:2 }}
+        </td>
+        <td style="border-right:0.8px solid #000000; border-bottom:0.8px solid #000000; padding-top: 2px;">
+          {{ plazo_8.2 | numberformat }}
+        </td>
+        <td style="border-right:0.8px solid #000000; border-bottom:0.8px solid #000000; padding-top: 2px;">
+          {{ plazo_8.3 | numberformat }}
+        </td>
+      </tr>
+      <tr>
+        <td style="border-right: 0.8px solid #000;">&nbsp;</td>
+        <td style="border-right:0.8px solid #000000; border-bottom:0.8px solid #000000; padding-top: 2px;">
+          10 años
+        </td>
+        <td style="border-right:0.8px solid #000000; border-bottom:0.8px solid #000000; padding-top: 2px;">
+          {{ plazo_10.1 | floatformat:2 }}
+        </td>
+        <td style="border-right:0.8px solid #000000; border-bottom:0.8px solid #000000; padding-top: 2px;">
+          {{ plazo_10.2 | numberformat }}
+        </td>
+        <td style="border-right:0.8px solid #000000; border-bottom:0.8px solid #000000; padding-top: 2px;">
+          {{ plazo_10.3 | numberformat }}
+        </td>
+      </tr>
+      <tr>
+        <td style="border-right: 0.8px solid #000;">&nbsp;</td>
+        <td style="border-right:0.8px solid #000000; border-bottom:0.8px solid #000000; padding-top: 2px;">
+          15 años
+        </td>
+        <td style="border-right:0.8px solid #000000; border-bottom:0.8px solid #000000; padding-top: 2px;">
+          {{ plazo_15.1 | floatformat:2 }}
+        </td>
+        <td style="border-right:0.8px solid #000000; border-bottom:0.8px solid #000000; padding-top: 2px;">
+          {{ plazo_15.2 | numberformat }}
+        </td>
+        <td style="border-right:0.8px solid #000000; border-bottom:0.8px solid #000000; padding-top: 2px;">
+          {{ plazo_15.3 | numberformat }}
+        </td>
+      </tr>
+      <tr>
+        <td style="border-right: 0.8px solid #000;">&nbsp;</td>
+        <td style="border-right:0.8px solid #000000; border-bottom:0.8px solid #000000; padding-top: 2px;">
+          20 años
+        </td>
+        <td style="border-right:0.8px solid #000000; border-bottom:0.8px solid #000000; padding-top: 2px;">
+          {{ plazo_20.1 | floatformat:2 }}
+        </td>
+        <td style="border-right:0.8px solid #000000; border-bottom:0.8px solid #000000; padding-top: 2px;">
+          {{ plazo_20.2 | numberformat }}
+        </td>
+        <td style="border-right:0.8px solid #000000; border-bottom:0.8px solid #000000; padding-top: 2px;">
+          {{ plazo_20.3 | numberformat }}
+        </td>
+      </tr>
+      <tr>
+        <td style="border-right: 0.8px solid #000;">&nbsp;</td>
+        <td style="border-right:0.8px solid #000000; border-bottom:0.8px solid #000000; padding-top: 2px;">
+          25 años
+        </td>
+        <td style="border-right:0.8px solid #000000; border-bottom:0.8px solid #000000; padding-top: 2px;">
+          {{ plazo_25.1 | floatformat:2 }}
+        </td>
+        <td style="border-right:0.8px solid #000000; border-bottom:0.8px solid #000000; padding-top: 2px;">
+          {{ plazo_25.2 | numberformat }}
+        </td>
+        <td style="border-right:0.8px solid #000000; border-bottom:0.8px solid #000000; padding-top: 2px;">
+          {{ plazo_25.3 | numberformat }}
+        </td>
+      </tr>
+      <tr>
+        <td style="border-right: 0.8px solid #000;">&nbsp;</td>
+        <td style="border-right:0.8px solid #000000; border-bottom:0.8px solid #000000; padding-top: 2px;">
+          30 años
+        </td>
+        <td style="border-right:0.8px solid #000000; border-bottom:0.8px solid #000000; padding-top: 2px;">
+          {{ plazo_30.1 | floatformat:2 }}
+        </td>
+        <td style="border-right:0.8px solid #000000; border-bottom:0.8px solid #000000; padding-top: 2px;">
+          {{ plazo_30.2 | numberformat }}
+        </td>
+        <td style="border-right:0.8px solid #000000; border-bottom:0.8px solid #000000; padding-top: 2px;">
+          {{ plazo_30.3 | numberformat }}
+        </td>
+      </tr>
+    </table>
+    {% endif %}
+    <p>
+      Al concretar su decisión de compra el cotizante provisionará ${{ proyecto.GuaranteeAmount | numberformat }} imputables a gastos operacionales. De dicho monto $50.000 serán imputados a todo evento, como gastos por concepto de tramitación de
+      su crédito Hipotecario.
+    </p>
+    <p>
+      Quedamos atentos a cualquier requerimiento adicional y dispuesto a aclararle cualquier duda. Nuestro objetivo es atenderlo
+      con esmero y entregarle la información que usted requiere para que su decisión de compra y en definitiva su compra, se
+      haga realidad.
+    </p>
+    <p>
+      Agradecidos por su visita y confiados en poder atenderlo con el profesionalismo que su decisión de compra merece, le
+      saludamos atentamente.
+    </p>
+    <p>
+      {% now "d" as day %}
+      {% now "m" as month %}
+      {% now "Y" as year %}
+      NOTAS :<br />
+      - El Cliente esta en conocimiento que los estacionamientos indicados son Tadem.
+      <br />
+      - Los montos en pesos corresponden al valor de la UF. a esta fecha, por lo cual se citan sólo como referencia.<br />
+      • Valor de la UF al {{ day }}/{{ month }}/{{ year }} es de ${{ uf }}.<br />
+      - Cotización válida por {{ proyecto.CotizacionDuration }} días, según disponibilidad de los inmuebles
+    </p>
+    <br />
+    <br />
+    <br />
+    <table style="margin-top: 30px; font-size: 100%;">
+      <tr style="height:80px;">
+        <td style="width: 10px;" colspan="3"></td>
+        <td style="border-top: 1.2px solid #000000;padding-top:0.3px;text-align: center;width: 270px">
+          <p style="font-weight: bold;">
+            {{ Cotizador }}
+            <br>
+            {{ nombre_empresa }}
+            <br>
+            {% for contacto in contactos %}
+              {% if contacto.ContactInfoTypeID.Name == 'Phone' %}
+                {{ contacto.Value }}
+              {% endif %}
+            {% endfor %}  <br>
+            {% for contacto in contactos %}
+              {% if contacto.ContactInfoTypeID.Name == 'Email' %}
+                {{ contacto.Value }}
+              {% endif %}
+            {% endfor %}
+          </p>
+        </td>
+      </tr>
+    </table>
+
+    {% endlanguage %}
+  </body>
+</html>

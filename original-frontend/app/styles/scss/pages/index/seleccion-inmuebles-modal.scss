@@ -1,0 +1,435 @@
+#seleccion_inmuebles_modal {
+  .modal-dialog {
+    .modal-content {
+    }
+  }
+  .modal-body {
+    padding: 0;
+    .accordion {
+      .card {
+        background-color: white;
+        > button {
+          text-align: left;
+          text-decoration: none;
+          font-weight: 600;
+          font-size: 0.875em;
+          color: #393f50;
+          padding: 0;
+          line-height: 1;
+          padding: 1rem 1.5rem;
+          display: flex;
+          align-items: center;
+          &:before {
+            font-family: "icon";
+            content: "\E017";
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 0.65em;
+            width: 1.5em;
+            height: 1.5em;
+            background-color: $main_color;
+            color: white;
+            border-radius: 50%;
+            margin-right: 0.5em;
+          }
+          &[aria-expanded="true"] {
+            background-color: #f7fafc;
+            &:before {
+              content: "\E014";
+            }
+          }
+        }
+        > div {
+          background-color: #f7fafc;
+          padding: 0 1.5rem;
+          table {
+            background-color: white;
+            //table-layout: fixed;
+            tbody {
+              tr {
+                border: 1px solid #e3e8ee;
+                &:last-child {
+                  border-top: none;
+                }
+                > * {
+                  font-size: 0.875em;
+                  line-height: 1;
+                  white-space: nowrap;
+                  border: none;
+                  color: #393f50;
+                  strong {
+                    font-weight: 700;
+                  }
+                  b {
+                    font-weight: 600;
+                  }
+                  a {
+                    display: flex;
+                    align-items: center;
+                    &:before {
+                      order: 2;
+                      margin-left: 0.5em;
+                      color: darken($main_color, 5%);
+                    }
+                  }
+                }
+                .checkbox {
+                  //color: $main_color;
+                  display: flex;
+                  justify-content: flex-start;
+                  align-items: center;
+                  font-weight: 600;
+                  white-space: nowrap;
+                  line-height: 1;
+                  span {
+                    font-size: 0.8em;
+                    position: relative;
+                    display: block;
+                    width: 1em;
+                    height: 1em;
+                    word-break: keep-all;
+                    margin-right: 0.5em;
+                    input {
+                      @include absolute;
+                      opacity: 0;
+                      z-index: 2;
+                      cursor: pointer;
+                    }
+                    label {
+                      @include absolute;
+                      background-color: white;
+                      border-radius: 0.18em;
+                      box-shadow: 1px 1px 2.5px 0px rgba(0, 0, 0, 0.14);
+                      border: 1px solid #dadada;
+                      position: relative;
+                      margin: 0;
+                      width: 1em;
+                      height: 1em;
+                    }
+                    input:checked + label {
+                      background-color: $main_color;
+                      border-color: #0872d0;
+                      &:after {
+                        font-size: 0.7em;
+                        font-family: "icon";
+                        content: "\E007";
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                        color: white;
+                        //background-color: red;
+                        width: 1em;
+                        height: 0.7em;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                      }
+                    }
+                  }
+                }
+                .expand {
+                  width: 100%;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    .summary {
+      padding: 1.5rem;
+      h4 {
+        font-size: 0.875em;
+        padding: 0;
+        margin: 0;
+        font-weight: 600;
+        color: #393f50;
+      }
+      table {
+        > * {
+          tr {
+            td {
+              border-top: none;
+              &.value {
+                border-top: 1px solid #e3e8ee;
+                padding-left: 0;
+                div {
+                  display: flex;
+                  margin: 0;
+                  width: 15rem;
+                  span {
+                    &:first-child {
+                    }
+                    &:last-child {
+                      flex: 1;
+                      text-align: right;
+                      font-weight: 700;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+        > tfoot {
+          tr {
+            td {
+              &.value {
+                span {
+                  font-size: 1.16em;
+                  white-space: nowrap;
+                }
+              }
+            }
+          }
+        }
+        > tbody {
+          tr {
+            td {
+              font-size: 0.875em;
+              font-weight: 600;
+              &:first-child {
+                padding-left: 0;
+              }
+              &:last-child {
+                padding-right: 0;
+              }
+              white-space: nowrap;
+              > * {
+                color: #393f50;
+              }
+              &.key {
+                color: $main_color;
+                width: 100%;
+              }
+              &.value {
+                b {
+                  font-weight: 700;
+                  display: inline-block;
+                  text-align: right;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+#seleccion_inmuebles_page {
+  padding: 0;
+  .accordion {
+    .card {
+      background-color: white;
+      > button {
+        text-align: left;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 0.875em;
+        color: #393f50;
+        padding: 0;
+        line-height: 1;
+        padding: 1rem 1.5rem;
+        display: flex;
+        align-items: center;
+        &:before {
+          font-family: "icon";
+          content: "\E017";
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-size: 0.65em;
+          width: 1.5em;
+          height: 1.5em;
+          background-color: $main_color;
+          color: white;
+          border-radius: 50%;
+          margin-right: 0.5em;
+        }
+        &[aria-expanded="true"] {
+          background-color: #f7fafc;
+          &:before {
+            content: "\E014";
+          }
+        }
+      }
+      > div {
+        background-color: #f7fafc;
+        padding: 0 1.5rem;
+        table {
+          background-color: white;
+          //table-layout: fixed;
+          tbody {
+            tr {
+              border: 1px solid #e3e8ee;
+              &:last-child {
+                border-top: none;
+              }
+              > * {
+                font-size: 0.875em;
+                line-height: 1;
+                white-space: nowrap;
+                border: none;
+                color: #393f50;
+                strong {
+                  font-weight: 700;
+                }
+                b {
+                  font-weight: 600;
+                }
+                a {
+                  display: flex;
+                  align-items: center;
+                  &:before {
+                    order: 2;
+                    margin-left: 0.5em;
+                    color: darken($main_color, 5%);
+                  }
+                }
+              }
+              .checkbox {
+                //color: $main_color;
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                font-weight: 600;
+                white-space: nowrap;
+                line-height: 1;
+                span {
+                  font-size: 0.8em;
+                  position: relative;
+                  display: block;
+                  width: 1em;
+                  height: 1em;
+                  word-break: keep-all;
+                  margin-right: 0.5em;
+                  input {
+                    @include absolute;
+                    opacity: 0;
+                    z-index: 2;
+                    cursor: pointer;
+                  }
+                  label {
+                    @include absolute;
+                    background-color: white;
+                    border-radius: 0.18em;
+                    box-shadow: 1px 1px 2.5px 0px rgba(0, 0, 0, 0.14);
+                    border: 1px solid #dadada;
+                    position: relative;
+                    margin: 0;
+                    width: 1em;
+                    height: 1em;
+                  }
+                  input:checked + label {
+                    background-color: $main_color;
+                    border-color: #0872d0;
+                    &:after {
+                      font-size: 0.7em;
+                      font-family: "icon";
+                      content: "\E007";
+                      position: absolute;
+                      top: 50%;
+                      left: 50%;
+                      transform: translate(-50%, -50%);
+                      color: white;
+                      //background-color: red;
+                      width: 1em;
+                      height: 0.7em;
+                      display: flex;
+                      justify-content: center;
+                      align-items: center;
+                    }
+                  }
+                }
+              }
+              .expand {
+                width: 100%;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  .summary {
+    padding: 1.5rem;
+    h4 {
+      font-size: 0.875em;
+      padding: 0;
+      margin: 0;
+      font-weight: 600;
+      color: #393f50;
+    }
+    table {
+      > * {
+        tr {
+          td {
+            border-top: none;
+            &.value {
+              border-top: 1px solid #e3e8ee;
+              padding-left: 0;
+              div {
+                display: flex;
+                margin: 0;
+                width: 15rem;
+                span {
+                  &:first-child {
+                  }
+                  &:last-child {
+                    flex: 1;
+                    text-align: right;
+                    font-weight: 700;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+      > tfoot {
+        tr {
+          td {
+            &.value {
+              span {
+                font-size: 1.16em;
+                white-space: nowrap;
+              }
+            }
+          }
+        }
+      }
+      > tbody {
+        tr {
+          td {
+            font-size: 0.875em;
+            font-weight: 600;
+            &:first-child {
+              padding-left: 0;
+            }
+            &:last-child {
+              padding-right: 0;
+            }
+            white-space: nowrap;
+            > * {
+              color: #393f50;
+            }
+            &.key {
+              color: $main_color;
+              width: 100%;
+            }
+            &.value {
+              b {
+                font-weight: 700;
+                display: inline-block;
+                text-align: right;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,29 @@
+# syntax=docker/dockerfile:1
+
+FROM python:3.8
+
+RUN apt update && apt install -y --no-install-recommends build-essential && rm -rf /var/lib/apt/lists/*
+
+RUN python3 -m pip install --upgrade pip wheel
+RUN set PIP_DEFAULT_TIMEOUT=1200
+
+WORKDIR /app
+
+ENV DJANGO_SETTINGS_MODULE=sgi_web_back_project.dev_settings
+ENV UF_AUTH_KEY='UFAuthKey'
+ENV PIPEDRIVE_API_TOKEN='apiToken'
+ENV EMAIL_HOST='smtp.mailtrap.io'
+ENV EMAIL_HOST_USER='3768cb9f29666e'
+ENV EMAIL_HOST_PASSWORD='4d0b0811f726b5'
+ENV EMAIL_PORT=2525
+ENV EMAIL_TIMEOUT=15
+
+EXPOSE 8000/TCP
+
+COPY requirements.txt .
+
+RUN python3 -m pip install --no-cache-dir -r requirements.txt
+
+COPY . .
+
+CMD ["gunicorn", "sgi_web_back_project.wsgi", "--bind", "0.0.0.0:8000"]
